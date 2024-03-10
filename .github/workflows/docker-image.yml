@@ -1,8 +1,11 @@
 name: Update Dependencies and Build Docker Image
 
+# on:
+#   schedule:
+#     - cron: '0 11 * * *'
+
 on:
-  schedule:
-    - cron: '0 11 * * *'
+  workflow_dispatch:
 
 jobs:
   update-and-build:
@@ -50,8 +53,8 @@ jobs:
         file: Dockerfile
         platforms: 'linux/amd64,linux/arm64'
         push: true
-        tags: '${{ steps.meta.outputs.tags }}'
+        # tags: '${{ steps.meta.outputs.tags }}'
+        tags: pysergio/hiroshi
         labels: '${{ steps.meta.outputs.labels }}'
         cache-from: 'type=registry,ref=pysergio/hiroshi:buildcache'
         cache-to: 'type=registry,ref=pysergio/hiroshi:buildcache,mode=max'
-
