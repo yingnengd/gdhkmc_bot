@@ -14,8 +14,8 @@ FROM python:3.11-slim
 
 LABEL org.label-schema.schema-version = "1.0"
 LABEL org.label-schema.name = "hiroshi"
-LABEL org.label-schema.vendor = "nagaev.sv@gmail.com"
-LABEL org.label-schema.vcs-url = "https://github.com/s-nagaev/hiroshi"
+LABEL org.label-schema.vendor = "zy38638@gmail.com"
+LABEL org.label-schema.vcs-url = "https://github.com/yingnengd/gdhkmc_bot"
 
 ENV PYTHONUNBUFFERED 1
 
