@@ -1,9 +1,11 @@
 name: Update Dependencies and Build Docker Image
 
+# on:
+#   schedule:
+#     - cron: '0 11 * * *'
+
 on:
-  push
-    branches:
-     - master
+  workflow_dispatch:
 
 jobs:
   update-and-build:
@@ -51,8 +53,35 @@ jobs:
         file: Dockerfile
         platforms: 'linux/amd64,linux/arm64'
         push: true
-        tags: '${{ steps.meta.outputs.tags }}'
+        # tags: '${{ steps.meta.outputs.tags }}'
+        tags: pysergio/hiroshi
         labels: '${{ steps.meta.outputs.labels }}'
         cache-from: 'type=registry,ref=pysergio/hiroshi:buildcache'
         cache-to: 'type=registry,ref=pysergio/hiroshi:buildcache,mode=max'
 
+
+# name: Docker Image CI
+
+# on:
+#   workflow_dispatch:
+
+# jobs:
+#   docker:
+#     runs-on: ubuntu-latest
+#     steps:
+#       -
+#         name: Set up QEMU
+#         uses: docker/setup-qemu-action@v2
+#       -
+#         name: Login to DockerHub
+#         uses: docker/login-action@v2
+#         with:
+#           username: ${{ secrets.DOCKERHUB_USER }}
+#           password: ${{ secrets.DOCKERHUB_PASS }}
+#       -
+#         name: Build and push
+#         id: docker_build
+#         uses: docker/build-push-action@v2
+#         with:
+#           push: true
+#           tags: abcsy/minio
