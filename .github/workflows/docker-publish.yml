@@ -1,8 +1,10 @@
 name: Update Dependencies and Build Docker Image
 
 on:
-  schedule:
-    - cron: '0 11 * * *'
+  # schedule:
+  #   - cron: '0 11 * * *'
+    branches:
+   - master
 
 jobs:
   update-and-build:
