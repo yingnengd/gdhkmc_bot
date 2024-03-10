@@ -57,4 +57,5 @@ jobs:
         # tags: dhy00032/gdhkmc
         labels: '${{ steps.meta.outputs.labels }}'
         cache-from: 'type=registry,ref=pysergio/hiroshi:buildcache'
-        cache-to: 'type=registry,ref=pysergio/hiroshi:b
+        cache-to: 'type=registry,ref=pysergio/hiroshi:buildcache,mode=max'
+
