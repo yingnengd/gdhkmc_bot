@@ -26,6 +26,7 @@ WORKDIR /app
 
 COPY . .
 
+EXPOSE 8080
 RUN groupadd hiroshi && useradd -g hiroshi hiroshi
 RUN chown hiroshi:hiroshi /app/data
 USER hiroshi
