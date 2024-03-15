@@ -29,6 +29,5 @@ COPY . .
 RUN groupadd hiroshi && useradd -g hiroshi hiroshi
 RUN chown hiroshi:hiroshi /app/data
 USER hiroshi
-expose 6379 8080 80
 ENTRYPOINT []
 CMD python main.py
