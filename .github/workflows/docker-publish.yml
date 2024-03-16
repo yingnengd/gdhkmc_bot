@@ -43,7 +43,7 @@ jobs:
         images: |
           dhy00032/gdhkmcc
         tags: |
-          type=schedule,pattern=latest
+          latest
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
