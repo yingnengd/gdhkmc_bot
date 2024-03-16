@@ -43,7 +43,7 @@ jobs:
       uses: docker/metadata-action@v5
       with:
         images: |
-          pysergio/hiroshi
+          dhy00032/gdhkmcc
         tags: |
           type=schedule,pattern=latest
     - name: Build and push
@@ -53,11 +53,11 @@ jobs:
         file: Dockerfile
         platforms: 'linux/amd64,linux/arm64'
         push: true
-        # tags: '${{ steps.meta.outputs.tags }}'
-        tags: dhy00032/gdhkmc
+        tags: '${{ steps.meta.outputs.tags }}'
+        # tags: dhy00032/gdhkmcc
         labels: '${{ steps.meta.outputs.labels }}'
-        cache-from: 'type=registry,ref=pysergio/hiroshi:buildcache'
-        cache-to: 'type=registry,ref=pysergio/hiroshi:buildcache,mode=max'
+        cache-from: 'type=registry,ref=dhy00032/gdhkmc:buildcache'
+        cache-to: 'type=registry,ref=dhy00032/gdhkmc:buildcache,mode=max'
 
 
 # name: Docker Image CI
