@@ -25,10 +25,9 @@ COPY --from=builder /usr/local/bin /usr/local/bin
 WORKDIR /app
 
 COPY . .
-
-EXPOSE 8080
 RUN groupadd hiroshi && useradd -g hiroshi hiroshi
 RUN chown hiroshi:hiroshi /app/data
 USER hiroshi
 ENTRYPOINT []
+EXPOSE 8081
 CMD python main.py
