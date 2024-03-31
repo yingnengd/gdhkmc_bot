@@ -26,6 +26,3 @@ do
 done
 
 exec "$@"
-
-python main.py
-
