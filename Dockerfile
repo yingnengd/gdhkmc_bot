@@ -1,6 +1,6 @@
 FROM docker:dind
 
-WORKDIR /app
+#WORKDIR /app
 
 COPY koyeb-entrypoint.sh /koyeb-entrypoint.sh
 
