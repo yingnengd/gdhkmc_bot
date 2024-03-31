@@ -1,4 +1,4 @@
-FROM python:3.11-slim AS builder
+-FROM python:3.11-slim AS builder
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
   gcc \
@@ -9,6 +9,8 @@ WORKDIR /app
 
 COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
+
+#FROM docker:dind
 
 FROM python:3.11-slim
 
@@ -29,5 +31,10 @@ RUN groupadd hiroshi && useradd -g hiroshi hiroshi
 RUN chown hiroshi:hiroshi /app/data
 USER hiroshi
 ENTRYPOINT []
-EXPOSE 8081
-CMD python main.py
+
+COPY koyeb-entrypoint.sh /koyeb-entrypoint.sh
+
+ENTRYPOINT ["/koyeb-entrypoint.sh"]
+
+#CMD python main.py
+CMD ["docker-compose", "up"]
