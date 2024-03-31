@@ -1,1 +1,0 @@
-dispatcher: python main.py
