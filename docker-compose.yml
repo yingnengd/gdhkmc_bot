@@ -1,23 +1,26 @@
 version: '3'
 
-   services:
-     hiroshi:
-      restart: unless-stopped
-      image: pysergio/hiroshi:latest
-      environment:
-        TELEGRAM_BOT_TOKEN="7048575756:AAFUqhrs1KEos2JgtVqRVkBuKLj9zpYFc7Q"
-        BOT_NAME="gdhkmc_bot"
-        MAX_CONVERSATION_AGE_MINUTES=60
-        MAX_HISTORY_TOKENS=1500
-        MESSAGE_FOR_DISALLOWED_USERS="You're not allowed to interact with me, sorry. Contact my owner first, please."
-        REDIS="redis://localhost"
-        REDIS_PASSWORD="Secret!"
-        TIMEOUT=15
-        GROUPS_WHITELIST="-4117455751,-1002009780961,-1002072263424,-4103316636,-4194917890,-4149982512,-4033298571,-4157220499,-1001996128855,-4118000407,-4107065825,-4128089631,-4155322808,-4143034609"
-        USERS_WHITELIST="@lonitiy,@feirrand,@uridun,@Hollyga,@yd9798"
-        GROUP_ADMINS="@lonitiy,@feirrand,@uridun,@Hollyga,@yd9798"
-      volumes:
-        - hiroshi_data:/app/data
-   
-   volumes:
-     hiroshi_data:
+services:
+  hiroshi:
+   restart: unless-stopped
+   image: pysergio/hiroshi:latest
+   environment:
+      TELEGRAM_BOT_TOKEN="7048575756:AAFUqhrs1KEos2JgtVqRVkBuKLj9zpYFc7Q"
+      BOT_NAME="gdhkmc_bot"
+      MAX_CONVERSATION_AGE_MINUTES=60
+      MAX_HISTORY_TOKENS=1500
+      MESSAGE_FOR_DISALLOWED_USERS="You're not allowed to interact with me, sorry. Contact my owner first, please."
+      REDIS: "redis://redis"
+      TIMEOUT=15
+      GROUPS_WHITELIST="-4117455751,-1002009780961,-1002072263424,-4103316636,-4194917890,-4149982512,-4033298571,-4157220499,-1001996128855,-4118000407,-4107065825,-4128089631,-4155322808,-4143034609"
+      USERS_WHITELIST="@lonitiy,@feirrand,@uridun,@Hollyga,@yd9798"
+      GROUP_ADMINS="@lonitiy,@feirrand,@uridun,@Hollyga,@yd9798"
+
+  redis:
+    restart: unless-stopped
+    image: redis:6-alpine
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
